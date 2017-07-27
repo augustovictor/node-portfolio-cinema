@@ -8,22 +8,26 @@ const expressWinston = require('express-winston');
 const versioning = require('express-routes-versioning');
 const app = express();
 const port = process.env.PORT || 3000;
+const logConfigs = process.env.LOGSTASH_CONFIGS;
 
 // MIDDLEWARES
 app.use(bodyParser.json());
 app.use(expressWinston.logger({
     transports: [
-        new winston.transports.Console({
-            json: true,
-            colorize: true
+        new winston.transports.Logstash({
+            host: logConfigs.host,
+            port: logConfigs.port,
+            node_name: logConfigs.node_name
         })
     ]
 }));
-app.use(expressWinston.errorLogger({
+app.use(expressWinston.logger({
     transports: [
-        new winston.transports.Console({
-            json: true,
-            colorize: true
+        new winston.transports.File({
+            name: 'error-file',
+            filename: 'filelog-error.log',
+            level: 'error',
+            json: true
         })
     ]
 }));

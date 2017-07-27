@@ -1544,6 +1544,11 @@
         "stack-trace": "0.0.10"
       }
     },
+    "winston-logstash": {
+      "version": "0.3.0",
+      "resolved": "https://registry.npmjs.org/winston-logstash/-/winston-logstash-0.3.0.tgz",
+      "integrity": "sha1-9x+hJ4vh8OroO8rT4i/kHVHH8ak="
+    },
     "wrappy": {
       "version": "1.0.2",
       "resolved": "https://registry.npmjs.org/wrappy/-/wrappy-1.0.2.tgz",

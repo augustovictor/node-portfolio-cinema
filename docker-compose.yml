@@ -1,6 +1,37 @@
 version: '2'
 
 services:
+
+    elasticsearch: # Requests to this DNS elasticsearch:9200
+        container_name: elasticsearch-cinema
+        image: elasticsearch:5.5.1-alpine
+        ports:
+            - '9200' # REST
+            - '9300' # Cross elastic nodes communication
+
+    kibana:
+        container_name: kibana-cinema
+        image: kibana:5
+        ports:
+            - '5601'
+        links: 
+            - elasticsearch:elasticsearch
+        depends_on:
+            - elasticsearch
+
+    logstash:
+        container_name: logstash-cinema
+        image: logstash:5-alpine
+        ports:
+            - '10514'
+        volumes:
+            - ./logstash:/config-dir
+        links:
+            - elasticsearch:elasticsearch
+        command: logstash -f /config-dir/logstash.conf
+        depends_on:
+            - elasticsearch
+
     node-cinema:
         container_name: node-cinema
         image: victoraweb/node-cinema
@@ -10,7 +41,12 @@ services:
         command: node_modules/.bin/nodemon --exec npm start
         environment:
             NODE_ENV: development
+            LOGSTASH_CONFIGS: '{ "host": "logstash", "port": "10514", "node_name": "node-cinema-logs" }'
         ports:
             - '8080:3000'
         volumes:
             - .:/usr/src/app
+        depends_on:
+            - elasticsearch
+            - kibana
+            - logstash
