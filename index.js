@@ -1,14 +1,36 @@
+// MODULES
 const express = require('express');
 const bodyParser = require('body-parser');
+const winston = require('winston');
+const expressWinston = require('express-winston');
 
+// DEFINITIONS
 const versioning = require('express-routes-versioning');
 const app = express();
-app.use(bodyParser.json());
-
-const routesV1 = require('./src/routes/v1')(app);
-
 const port = process.env.PORT || 3000;
 
+// MIDDLEWARES
+app.use(bodyParser.json());
+app.use(expressWinston.logger({
+    transports: [
+        new winston.transports.Console({
+            json: true,
+            colorize: true
+        })
+    ]
+}));
+app.use(expressWinston.errorLogger({
+    transports: [
+        new winston.transports.Console({
+            json: true,
+            colorize: true
+        })
+    ]
+}));
+
+
+// ROUTES
+const routesV1 = require('./src/routes/v1')(app);
 
 // app.get('/', versioning({
 //     '1.0.0': rootV1,
@@ -20,6 +42,11 @@ app.get('/', (req, res, next) => {
     next();
 });
 
+app.get('/error', (req, res, next) => {
+    return next(new Error('Log this error to the console.'));
+})
+
+// SERVER
 app.listen(port, () => {
-    console.log(`App running on ${ port }. Env: ${ process.env.NODE_ENV }`);
+    winston.info('App running on port %d. Environment: %s', port, process.env.NODE_ENV);
 });
