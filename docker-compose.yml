@@ -8,6 +8,8 @@ services:
         ports:
             - '9200' # REST
             - '9300' # Cross elastic nodes communication
+        networks:
+            - elk
 
     kibana:
         container_name: kibana-cinema
@@ -16,6 +18,8 @@ services:
             - '5601'
         links: 
             - elasticsearch:elasticsearch
+        networks:
+            - elk
         depends_on:
             - elasticsearch
 
@@ -29,6 +33,8 @@ services:
         links:
             - elasticsearch:elasticsearch
         command: logstash -f /config-dir/logstash.conf
+        networks:
+            - elk
         depends_on:
             - elasticsearch
 
@@ -46,7 +52,13 @@ services:
             - '8080:3000'
         volumes:
             - .:/usr/src/app
+        networks:
+            - elk
         depends_on:
             - elasticsearch
             - kibana
             - logstash
+
+networks:
+    elk:
+        driver: bridge

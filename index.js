@@ -3,6 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const winston = require('winston');
 const expressWinston = require('express-winston');
+require('winston-logstash');
 
 // DEFINITIONS
 const versioning = require('express-routes-versioning');
