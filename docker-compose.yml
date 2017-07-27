@@ -1,0 +1,16 @@
+version: '2'
+
+services:
+    node-cinema:
+        container_name: node-cinema
+        image: victoraweb/node-cinema
+        build:
+            context: .
+            dockerfile: ./Dockerfile
+        command: node_modules/.bin/nodemon --exec npm start
+        environment:
+            NODE_ENV: development
+        ports:
+            - '8080:3000'
+        volumes:
+            - .:/usr/src/app

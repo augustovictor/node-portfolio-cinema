@@ -1,0 +1,28 @@
+{
+  "name": "portfolio-cinema",
+  "version": "1.0.0",
+  "description": "Application developed to show my application development skills and concerns.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/augustovictor/node-portfolio-cinema.git"
+  },
+  "author": "Victor Augusto",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/augustovictor/node-portfolio-cinema/issues"
+  },
+  "homepage": "https://github.com/augustovictor/node-portfolio-cinema#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "express-routes-versioning": "^1.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}
