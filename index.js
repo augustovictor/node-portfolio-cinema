@@ -21,7 +21,7 @@ app.use(expressWinston.logger({
             node_name: logConfigs.node_name
         })
     ]
-}));
+})); 
 app.use(expressWinston.logger({
     transports: [
         new winston.transports.File({

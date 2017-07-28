@@ -14,3 +14,7 @@ up:
 down:
 	@echo DOCKER-COMPOSE DOWN
 	docker-compose down -v --rmi local
+
+remove-all:
+	@echo REMOVING ALL CONTAINERS
+	docker container rm -f $(docker ps -a -q)
