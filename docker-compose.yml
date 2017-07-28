@@ -4,22 +4,22 @@ services:
 
     elasticsearch: # Requests to this DNS elasticsearch:9200
         container_name: elasticsearch-cinema
-        image: elasticsearch:5.5.1-alpine
+        image: elasticsearch:5-alpine
         ports:
-            - '9200' # REST
-            - '9300' # Cross elastic nodes communication
-        networks:
-            - elk
+            - '9200:9200' # REST
+            - '9300:9300' # Cross elastic nodes communication
+        deploy:
+            resources:
+                limits:
+                    memory: 500MB
 
     kibana:
         container_name: kibana-cinema
         image: kibana:5
         ports:
-            - '5601'
+            - '5601:5601'
         links: 
-            - elasticsearch:elasticsearch
-        networks:
-            - elk
+            - elasticsearch:elasticsearch-cinema
         depends_on:
             - elasticsearch
 
@@ -27,14 +27,12 @@ services:
         container_name: logstash-cinema
         image: logstash:5-alpine
         ports:
-            - '10514'
+            - '10514:10514'
+        links:
+            - elasticsearch:elasticsearch-cinema
         volumes:
             - ./logstash:/config-dir
-        links:
-            - elasticsearch:elasticsearch
         command: logstash -f /config-dir/logstash.conf
-        networks:
-            - elk
         depends_on:
             - elasticsearch
 
@@ -49,16 +47,8 @@ services:
             NODE_ENV: development
             LOGSTASH_CONFIGS: '{ "host": "logstash", "port": "10514", "node_name": "node-cinema-logs" }'
         ports:
-            - '8080:3000'
+            - '3000:3000'
         volumes:
             - .:/usr/src/app
-        networks:
-            - elk
         depends_on:
-            - elasticsearch
-            - kibana
             - logstash
-
-networks:
-    elk:
-        driver: bridge
