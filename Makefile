@@ -1,9 +1,16 @@
 check_npm = if [ ! -d "node_modules" ]; then npm install; fi
 
+options:
+	@echo ------------------------------------------
+	@echo OPTIONS
+	@echo make start: Start the application
+	@echo make up: Starts the docker
+	@echo ------------------------------------------
+
 start:
 	$(call check_npm)
-
-	npm start
+	@echo STARTING APPLICATION
+	@npm start
 
 up:
 	$(call check_npm)

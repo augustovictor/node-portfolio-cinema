@@ -26,13 +26,13 @@ services:
     logstash:
         container_name: logstash-cinema
         image: logstash:5-alpine
-        #ports:
-        #    - '9500:9500'
+        ports:
+            - '9500:9500'
         links:
             - elasticsearch:elasticsearch-cinema
         volumes:
-            - ./logstash:/etc/logstash/conf.d
-        command: logstash -f /etc/logstash/conf.d/logstash.conf
+            - ./logstash:/config-dir/
+        command: -f /config-dir/logstash.conf
         depends_on:
             - elasticsearch
         networks:
