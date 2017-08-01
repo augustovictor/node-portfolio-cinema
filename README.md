@@ -1,10 +1,10 @@
 # node-portfolio-cinema
 
 - [ ] Monitoring:
-- [ ] Logging:
+- [x] Logging:
     - [x] Smart Logging: Winston
-    - [ ] Smart aggregation:
-    - [ ] Smart visualization: 
+    - [x] Smart aggregation: Elastic
+    - [x] Smart visualization: Kibana
 - [ ] Reverse proxy for static content
 - [x] Lock dependencies: npm shrinkwrap
 - [ ] Guard and restart process upon failure
