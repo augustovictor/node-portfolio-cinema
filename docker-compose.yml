@@ -47,7 +47,7 @@ services:
         command: node_modules/.bin/nodemon --exec npm start
         environment:
             NODE_ENV: development
-            LOGSTASH_CONFIGS: '{ "host": "localhost", "port": "9500", "node_name": "node-cinema-logs" }'
+            LOGSTASH_CONFIGS: '{ "host": "logstash", "port": "9500", "node_name": "node-cinema-logs" }'
         ports:
             - '3000:3000'
         volumes:

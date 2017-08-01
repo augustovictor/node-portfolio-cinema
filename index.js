@@ -10,29 +10,35 @@ const versioning = require('express-routes-versioning');
 const app = express();
 const port = process.env.PORT || 3000;
 let { port: logstashPort, host, node_name } = JSON.parse(process.env.LOGSTASH_CONFIGS);
-logConfigs = { host, port: logstashPort, node_name };
+logConfigs = {
+    host, // This is the service name in docker-compose.yml
+    port: logstashPort,
+    node_name,
+    handleExceptions: true,
+    humanReadableUnhandledException: true
+};
 
 // MIDDLEWARES
 app.use(bodyParser.json());
 
-// winston.add(winston.transports.Logstash, {
-//     host: logConfigs.host,
-//     port: logConfigs.port,
-//     node_name: logConfigs.node_name
-// });
+const logger = new winston.Logger({
+    transports: [
+        new (winston.transports.Console)({
+            colorize: true,
+            timestamp: () => new Date().toLocaleString(),
+            handleExceptions: true,
+            humanReadableUnhandledException: true
+        })
+    ]
+});
 
-winston.add(winston.transports.Logstash, logConfigs);
+logger.add(winston.transports.Logstash, logConfigs);
 
 app.use(expressWinston.logger({
     transports: [
-        new winston.transports.Console({
-            json: true,
-            colorized: true
-        })
+        logger
     ]
-}));
-
-
+}))
 
 // ROUTES
 const routesV1 = require('./src/routes/v1')(app);
@@ -43,6 +49,7 @@ const routesV1 = require('./src/routes/v1')(app);
 // }));
 
 app.get('/', (req, res, next) => {
+    // logger.info('New request');
     res.send('Hey you!!!').end();
     next();
 });
