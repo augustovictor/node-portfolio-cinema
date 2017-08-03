@@ -10,8 +10,14 @@ const versioning = require('express-routes-versioning');
 const app = express();
 const port = process.env.PORT || 3000;
 let { port: logstashPort, host, node_name } = JSON.parse(process.env.LOGSTASH_CONFIGS);
+
+
 // MIDDLEWARES
 app.use(bodyParser.json());
+
+// Log the whole request and response body
+expressWinston.requestWhitelist.push('body')
+expressWinston.responseWhitelist.push('body')
 
 const logger = new winston.Logger({
     transports: [
@@ -54,7 +60,7 @@ app.get('/', (req, res, next) => {
 
 app.get('/error', (req, res, next) => {
     return next(new Error('Log this error to the console.'));
-})
+});
 
 // SERVER
 app.listen(port, () => {

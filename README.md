@@ -1,16 +1,26 @@
 # node-portfolio-cinema
 
 - [ ] Monitoring:
+    - [x] **A**pplication **P**erformance **M**onitoring usage: New relic
+    - [ ] Hardware: -
 - [x] Logging:
     - [x] Smart Logging: Winston
     - [x] Smart aggregation: Elastic
     - [x] Smart visualization: Kibana
+- [ ] API documentation using Swagger
 - [ ] Reverse proxy for static content
 - [x] Lock dependencies: npm shrinkwrap
+- [ ] Unit tests
+- [ ] Integration tests
+- [ ] Code quality
+    - [ ] Code climate
+    - [ ] ESLint
+- [ ] Continuous Delivery tools
+    - [ ] Jenkins
+    - [ ] 
 - [ ] Guard and restart process upon failure
 - [ ] Utilize all CPU cores
 - [ ] Maintenance endpoint
-- [ ] **A**pplication **P**erformance **M**onitoring usage
 - [ ] Code production ready
 - [ ] Security
 - [ ] Measure and guard the memory usage
@@ -21,5 +31,7 @@
 - [ ] Set NODE_ENV production
 - [ ] Automated, atomic and zero-downtime deployments
 - [ ] Change the application version in each deployment
-- [ ] API documentation using Swagger
 - [ ] Validate arguments using a dedicated library
+- [ ] Use docker
+- [ ] Use kubernetes
+- [ ] Use terraform
