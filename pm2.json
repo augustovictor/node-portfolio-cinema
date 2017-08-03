@@ -1,0 +1,11 @@
+{
+    "apps": [
+        {
+            "name": "node-cinema",
+            "script": "index.js",
+            "env": {
+                "production": true
+            }
+        }
+    ]
+}

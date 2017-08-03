@@ -44,7 +44,7 @@ services:
         build:
             context: .
             dockerfile: ./Dockerfile
-        command: node_modules/.bin/nodemon --exec npm start
+        # command: node_modules/.bin/nodemon --exec npm start
         environment:
             NODE_ENV: development
             LOGSTASH_CONFIGS: '{ "host": "logstash", "port": "9500", "node_name": "node-cinema-logs" }' # The host will be the service name in this file

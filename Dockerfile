@@ -1,9 +1,10 @@
-FROM node:8-alpine
+#node:8-alpine
+FROM keymetrics/pm2-docker-alpine:latest 
 
 ENV PORT=3000
 
 # This variable should be set in production environment instead of in a file
-ENV NEW_RELIC_KEY=API_KEY
+ENV NEW_RELIC_KEY=6eb7936d237d394a7251ed31cc758a56287e86b2
 
 EXPOSE $PORT
 
@@ -13,8 +14,12 @@ WORKDIR /usr/src/app
 
 COPY package.json npm-shrinkwrap.json ./
 
+COPY pm2.json .
+
+RUN npm install --production --silent --progress=false
+
 RUN npm install --silent --progress=false && npm cache clean --force
 
 COPY . .
 
-CMD ["npm", "start"]
+CMD ["pm2-docker", "start", "pm2.json"]
