@@ -16,7 +16,7 @@
 - [x] Lock dependencies: npm shrinkwrap
 - [ ] Unit tests
 - [ ] Integration tests
-- [ ] Code quality
+- [x] Code quality
     - [x] Code climate
     - [x] Lint XO
 - [ ] Continuous Integration

@@ -22,4 +22,6 @@ RUN npm install --silent --progress=false && npm cache clean --force
 
 COPY . .
 
-CMD ["pm2-docker", "pm2.json"]
+# Use pm2-docker in production
+# Use pm2-dev to watch files and restart upon change
+CMD ["pm2-dev", "pm2.json"]

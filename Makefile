@@ -25,3 +25,7 @@ down:
 remove-all:
 	@echo REMOVING ALL CONTAINERS
 	docker container rm -f $(docker ps -a -q)
+
+xo:
+	@echo RUNNING XO - CODE QUALITY
+	./node_modules/.bin/nodemon -x ./node_modules/.bin/xo

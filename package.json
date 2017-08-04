@@ -4,8 +4,8 @@
   "description": "Application developed to show my application development skills and concerns.",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/index.js",
+    "test": "xo"
   },
   "repository": {
     "type": "git",
@@ -27,6 +27,16 @@
     "winston-logstash": "^0.3.0"
   },
   "devDependencies": {
-    "nodemon": "^1.11.0"
+    "eslint": "^4.3.0",
+    "eslint-config-xo": "^0.18.2",
+    "nodemon": "^1.11.0",
+    "xo": "^0.18.2"
+  },
+  "xo": {
+    "space": 4,
+    "ignores": [
+      "node_modules/**/*",
+      "newrelic.js"
+    ]
   }
 }
