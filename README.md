@@ -1,5 +1,8 @@
 # node-portfolio-cinema
 
+[![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/augustovictor/node-portfolio-cinema)
+
+
 - [ ] Monitoring:
     - [x] **A**pplication **P**erformance **M**onitoring usage: New relic
     - [ ] Hardware: -
