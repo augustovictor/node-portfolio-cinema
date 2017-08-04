@@ -1,7 +1,5 @@
 [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/augustovictor/node-portfolio-cinema)
-
 [![Code Climate](https://codeclimate.com/github/augustovictor/node-portfolio-cinema/badges/gpa.svg)](https://codeclimate.com/github/augustovictor/node-portfolio-cinema)
-
 [![Test Coverage](https://codeclimate.com/github/augustovictor/node-portfolio-cinema/badges/coverage.svg)](https://codeclimate.com/github/augustovictor/node-portfolio-cinema)
 
 # node-portfolio-cinema
