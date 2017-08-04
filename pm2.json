@@ -3,8 +3,11 @@
         {
             "name": "node-cinema",
             "script": "index.js",
+            "max_restarts": 20,
+            "instances": 4, // 0 = as much as possible
+            "max_memory_restart": "200M",
             "env": {
-                "production": true
+                
             }
         }
     ]

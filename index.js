@@ -66,3 +66,10 @@ app.get('/error', (req, res, next) => {
 app.listen(port, () => {
     winston.info('App running on port %d. Environment: %s', port, process.env.NODE_ENV);
 });
+
+process.on('SIGINT', function() {
+    process.stdout.write('GRACEFUL SHUTDOWN');
+//    db.stop(function(err) {
+//      process.exit(err ? 1 : 0);
+//    });
+});

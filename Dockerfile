@@ -22,4 +22,4 @@ RUN npm install --silent --progress=false && npm cache clean --force
 
 COPY . .
 
-CMD ["pm2-docker", "start", "pm2.json"]
+CMD ["pm2-docker", "pm2.json"]
