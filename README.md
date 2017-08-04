@@ -1,7 +1,10 @@
-# node-portfolio-cinema
-
 [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/augustovictor/node-portfolio-cinema)
 
+[![Code Climate](https://codeclimate.com/github/augustovictor/node-portfolio-cinema/badges/gpa.svg)](https://codeclimate.com/github/augustovictor/node-portfolio-cinema)
+
+[![Test Coverage](https://codeclimate.com/github/augustovictor/node-portfolio-cinema/badges/coverage.svg)](https://codeclimate.com/github/augustovictor/node-portfolio-cinema)
+
+# node-portfolio-cinema
 
 - [ ] Monitoring:
     - [x] **A**pplication **P**erformance **M**onitoring usage: New relic
@@ -16,11 +19,10 @@
 - [ ] Unit tests
 - [ ] Integration tests
 - [ ] Code quality
-    - [ ] Code climate
-    - [ ] ESLint
-- [ ] Continuous Delivery tools
-    - [ ] Jenkins
-    - [ ] 
+    - [x] Code climate
+    - [x] Lint XO
+- [ ] Continuous Integration
+    - [ ] Travis
 - [ ] Guard and restart process upon failure
 - [ ] Utilize all CPU cores
 - [ ] Maintenance endpoint
