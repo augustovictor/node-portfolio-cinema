@@ -9,7 +9,7 @@ require('winston-logstash');
 // DEFINITIONS
 const app = express();
 const port = process.env.PORT || 3000;
-const {port: logstashPort, host, node_name} = JSON.parse(process.env.LOGSTASH_CONFIGS);
+const logstashConfigs = JSON.parse(process.env.LOGSTASH_CONFIGS);
 
 // MIDDLEWARES
 app.use(bodyParser.json());
@@ -30,9 +30,9 @@ const logger = new winston.Logger({
 });
 
 logger.add(winston.transports.Logstash, {
-    host, // This is the service name in docker-compose.yml
-    port: logstashPort,
-    node_name,
+    host: logstashConfigs.host, // This is the service name in docker-compose.yml
+    port: logstashConfigs.port,
+    node_name: logstashConfigs.node_name,
     handleExceptions: true,
     humanReadableUnhandledException: true
 });

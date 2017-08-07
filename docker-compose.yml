@@ -27,7 +27,7 @@ services:
         container_name: logstash-cinema
         image: logstash:5-alpine
         ports:
-            - '9500:9500'
+            - '9500:9600'
         links:
             - elasticsearch:elasticsearch-cinema
         volumes:
