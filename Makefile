@@ -29,3 +29,8 @@ remove-all:
 xo:
 	@echo RUNNING XO - CODE QUALITY
 	./node_modules/.bin/nodemon -x ./node_modules/.bin/xo
+
+ports:
+	@echo KIBANA: http://localhost:5601
+	@echo ELASTICSEARCH: http://localhost:9200
+	@echo NODE APP: http://localhost:3000

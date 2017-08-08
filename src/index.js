@@ -21,6 +21,7 @@ expressWinston.responseWhitelist.push('body');
 const logger = new winston.Logger({
     transports: [
         new (winston.transports.Console)({
+            json: true,
             colorize: true,
             timestamp: () => new Date().toLocaleString(),
             handleExceptions: true,

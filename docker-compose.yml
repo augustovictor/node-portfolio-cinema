@@ -1,4 +1,4 @@
-version: '2'
+version: '2.1'
 
 services:
 
@@ -37,6 +37,11 @@ services:
             - elasticsearch
         networks:
             - elk
+        healthcheck:
+            test: ["CMD", "curl", "http://localhost:9500"]
+            interval: 10s
+            timeout: 10s
+            retries: 6
 
     node-cinema:
         container_name: node-cinema
@@ -53,7 +58,8 @@ services:
         volumes:
             - .:/usr/src/app
         depends_on:
-            - logstash
+            logstash:
+                condition: service_healthy
         networks:
             - elk
 
