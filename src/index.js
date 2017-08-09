@@ -1,27 +1,22 @@
 // MODULES
-const express = require('express');
-const bodyParser = require('body-parser');
 const winston = require('winston');
 const expressWinston = require('express-winston');
 require('winston-logstash');
-// const versioning = require('express-routes-versioning');
 
 // DEFINITIONS
-const app = express();
 const port = process.env.PORT || 3000;
 const logstashConfigs = JSON.parse(process.env.LOGSTASH_CONFIGS);
 
-// MIDDLEWARES
-app.use(bodyParser.json());
 
 // Log the whole request and response body
 expressWinston.requestWhitelist.push('body');
 expressWinston.responseWhitelist.push('body');
+expressWinston.bodyBlacklist.push('token', 'password');
+const app = require('./app');
 
 const logger = new winston.Logger({
     transports: [
         new (winston.transports.Console)({
-            json: true,
             colorize: true,
             timestamp: () => new Date().toLocaleString(),
             handleExceptions: true,
@@ -44,32 +39,9 @@ app.use(expressWinston.logger({
     ]
 }));
 
-// ROUTES
-// const routesV1 = require('./src/routes/v1')(app);
-
-// app.get('/', versioning({
-//     '1.0.0': rootV1,
-//     '2.2.1': rootV2
-// }));
-
-app.get('/', (req, res, next) => {
-    // logger.info('New request');
-    res.send('Hey you!!!').end();
-    next();
-});
-
-app.get('/error', (req, res, next) => {
-    return next(new Error('Log this error to the console.'));
-});
+require('./routes/v1')(app);
 
 // SERVER
 app.listen(port, () => {
     winston.info('App running on port %d. Environment: %s', port, process.env.NODE_ENV);
-});
-
-process.on('SIGINT', function () {
-    process.stdout.write('GRACEFUL SHUTDOWN');
-//    db.stop(function(err) {
-//      process.exit(err ? 1 : 0);
-//    });
 });

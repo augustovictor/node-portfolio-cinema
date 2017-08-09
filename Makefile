@@ -1,4 +1,5 @@
 check_npm = if [ ! -d "node_modules" ]; then npm install; fi
+nodemon = ./node_modules/.bin/nodemon
 
 options:
 	@echo ------------------------------------------
@@ -28,7 +29,11 @@ remove-all:
 
 xo:
 	@echo RUNNING XO - CODE QUALITY
-	./node_modules/.bin/nodemon -x ./node_modules/.bin/xo
+	$(nodemon) -x ./node_modules/.bin/xo
+
+tests-watch:
+	@echo RUNNING AND WATCHING TESTS
+	export NODE_ENV=test && $(nodemon) --exec ./node_modules/.bin/mocha src/test/**/*.test.js
 
 ports:
 	@echo KIBANA: http://localhost:5601
