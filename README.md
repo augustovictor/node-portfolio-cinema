@@ -18,11 +18,11 @@
 - [ ] Integration tests
 - [x] Code quality
     - [x] Code climate
-    - [x] Lint XO
+    - [x] Eslint
 - [ ] Continuous Integration
-    - [ ] Travis
+    - [ ] CircleCI
 - [ ] Guard and restart process upon failure
-- [ ] Utilize all CPU cores
+- [x] Utilize all CPU cores: PM2
 - [ ] Maintenance endpoint
 - [ ] Code production ready
 - [ ] Security
@@ -31,10 +31,10 @@
 - [ ] Kill Servers almost every day
 - [ ] Tools that automatically detect vulnerabilities
 - [ ] TransactionId in each log statement
-- [ ] Set NODE_ENV production
+- [x] Set NODE_ENV production
 - [ ] Automated, atomic and zero-downtime deployments
 - [ ] Change the application version in each deployment
 - [ ] Validate arguments using a dedicated library
-- [ ] Use docker
-- [ ] Use kubernetes
+- [x] Use docker
+- [ ] AWS EC2
 - [ ] Use terraform
