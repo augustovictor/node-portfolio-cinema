@@ -17,15 +17,23 @@ up:
 	$(call check_npm)
 
 	@echo DOCKER-COMPOSE UP
-	docker-compose up --build --force-recreate
+	@docker-compose up --build --force-recreate
 
 down:
 	@echo DOCKER-COMPOSE DOWN
-	docker-compose down -v --rmi local
+	@docker-compose down -v --rmi local
 
 remove-all:
 	@echo REMOVING ALL CONTAINERS
-	docker container rm -f $(docker ps -a -q)
+	@docker container rm -f $(docker ps -a -q)
+
+lint:
+	@echo RUNNING LINTER
+	@$(nodemon) --exec node_modules/.bin/eslint "**/*.js" || exit 0
+
+lint-autofix:
+	@echo RUNNING LINTER
+	@$(nodemon) --exec node_modules/.bin/eslint "src/**/*.js" || exit 0
 
 xo:
 	@echo RUNNING XO - CODE QUALITY
