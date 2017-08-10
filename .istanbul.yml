@@ -1,8 +1,0 @@
-verbose: false
-instrumentation:
-    root: './src'
-    extensions:
-        - '.js'
-    default-excludes: true
-    excludes: ['*.test.js']
-    
