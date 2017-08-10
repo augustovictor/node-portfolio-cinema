@@ -19,7 +19,7 @@
 - [x] Code quality
     - [x] Code climate
     - [x] Eslint
-- [x] Code versioning: Gib
+- [x] Code versioning: Git
     - [x] Commit messages convention: Karma
 - [x] Continuous Integration: CircleCI
 - [ ] Guard and restart process upon failure
