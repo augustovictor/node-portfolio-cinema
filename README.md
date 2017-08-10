@@ -1,4 +1,3 @@
-(https://github.com/augustovictor/node-portfolio-cinema)
 [![Code Climate](https://codeclimate.com/github/augustovictor/node-portfolio-cinema/badges/gpa.svg)](https://codeclimate.com/github/augustovictor/node-portfolio-cinema)
 [![Test Coverage](https://codeclimate.com/github/augustovictor/node-portfolio-cinema/badges/coverage.svg)](https://codeclimate.com/github/augustovictor/node-portfolio-cinema)
 
@@ -16,6 +15,7 @@
 - [x] Lock dependencies: npm shrinkwrap
 - [ ] Unit tests
 - [ ] Integration tests
+- [x] Tests coverage report: Istanbul
 - [x] Code quality
     - [x] Code climate
     - [x] Eslint

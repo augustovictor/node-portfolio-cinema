@@ -1,11 +1,14 @@
 check_npm = if [ ! -d "node_modules" ]; then npm install; fi
 nodemon = ./node_modules/.bin/nodemon
+nodebin = ./node_modules/.bin
 
 options:
 	@echo ------------------------------------------
 	@echo OPTIONS
 	@echo make start: Start the application
 	@echo make up: Starts the docker
+	@echo make lint: run eslint and watch .js files
+	@echo make lint-autofix: run eslint --fix on .js files
 	@echo ------------------------------------------
 
 start:
@@ -29,19 +32,19 @@ remove-all:
 
 lint:
 	@echo RUNNING LINTER
-	@$(nodemon) --exec node_modules/.bin/eslint "**/*.js" || exit 0
+	@node_modules/.bin/eslint "**/*.js" || exit 0
 
 lint-autofix:
 	@echo RUNNING LINTER
-	@$(nodemon) --exec node_modules/.bin/eslint "src/**/*.js" || exit 0
+	@$(nodebin)/eslint "src/**/*.js" --fix || exit 0
 
-xo:
-	@echo RUNNING XO - CODE QUALITY
-	$(nodemon) -x ./node_modules/.bin/xo
-
-tests-watch:
+tests:
 	@echo RUNNING AND WATCHING TESTS
-	export NODE_ENV=test && $(nodemon) --exec ./node_modules/.bin/mocha src/test/**/*.test.js
+	@export NODE_ENV=test && $(nodebin)/nyc $(nodebin)/mocha src/test/**/*.test.js
+
+dev-watch:
+	@$(MAKE) tests
+	@$(MAKE) lint
 
 ports:
 	@echo KIBANA: http://localhost:5601

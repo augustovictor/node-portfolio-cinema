@@ -5,7 +5,7 @@ require('winston-logstash');
 
 // DEFINITIONS
 const port = process.env.PORT || 3000;
-const logstashConfigs = JSON.parse(process.env.LOGSTASH_CONFIGS);
+const logstashConfigs = process.env.LOGSTASH_CONFIGS && JSON.parse(process.env.LOGSTASH_CONFIGS);
 
 
 // Log the whole request and response body
