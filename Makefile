@@ -5,6 +5,7 @@ nodebin = ./node_modules/.bin
 options:
 	@echo ------------------------------------------
 	@echo OPTIONS
+	@echo make dev-watch: Start and watch lint and tests
 	@echo make start: Start the application
 	@echo make up: Starts the docker
 	@echo make lint: run eslint and watch .js files
@@ -42,13 +43,8 @@ tests:
 	@echo RUNNING TESTS
 	@export NODE_ENV=test && $(nodebin)/nyc --reporter=lcov --reporter=text $(nodebin)/mocha src/test/**/*.test.js
 
-cover:
-	@echo RUNNING ISTANBUL
-	@$(nodebin)/istanbul cover .istanbul.yml
-
 dev-watch:
-	@$(MAKE) tests
-	@$(MAKE) lint
+	$(nodemon) --exec $(MAKE) tests lint
 
 ports:
 	@echo KIBANA: http://localhost:5601
