@@ -21,8 +21,7 @@
     - [x] Eslint
 - [x] Code versioning: Gib
     - [x] Commit messages convention: Karma
-- [ ] Continuous Integration
-    - [ ] CircleCI
+- [x] Continuous Integration: CircleCI
 - [ ] Guard and restart process upon failure
 - [x] Utilize all CPU cores: PM2
 - [ ] Maintenance endpoint
