@@ -40,7 +40,11 @@ lint-autofix:
 
 tests:
 	@echo RUNNING TESTS
-	@export NODE_ENV=test && $(nodebin)/nyc $(nodebin)/mocha src/test/**/*.test.js
+	@export NODE_ENV=test && $(nodebin)/nyc --reporter=lcov $(nodebin)/mocha src/test/**/*.test.js
+
+cover:
+	@echo RUNNING ISTANBUL
+	@$(nodebin)/istanbul cover .istanbul.yml
 
 dev-watch:
 	@$(MAKE) tests
