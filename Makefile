@@ -39,7 +39,7 @@ lint-autofix:
 	@$(nodebin)/eslint "src/**/*.js" --fix || exit 0
 
 tests:
-	@echo RUNNING AND WATCHING TESTS
+	@echo RUNNING TESTS
 	@export NODE_ENV=test && $(nodebin)/nyc $(nodebin)/mocha src/test/**/*.test.js
 
 dev-watch:
