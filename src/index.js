@@ -1,10 +1,10 @@
 // MODULES
-const winston = require('winston');
+const winston        = require('winston');
 const expressWinston = require('express-winston');
 require('winston-logstash');
 
 // DEFINITIONS
-const port = process.env.PORT || 3000;
+const port            = process.env.PORT || 3000;
 const logstashConfigs = process.env.LOGSTASH_CONFIGS && JSON.parse(process.env.LOGSTASH_CONFIGS);
 
 
@@ -13,6 +13,7 @@ expressWinston.requestWhitelist.push('body');
 expressWinston.responseWhitelist.push('body');
 expressWinston.bodyBlacklist.push('token', 'password');
 const app = require('./app');
+const routesV1 = require('./routes/v1');
 
 const logger = new winston.Logger({
     transports: [
@@ -39,7 +40,7 @@ app.use(expressWinston.logger({
     ]
 }));
 
-require('./routes/v1')(app);
+app.use('/', routesV1);
 
 // SERVER
 app.listen(port, () => {

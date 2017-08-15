@@ -1,10 +1,11 @@
-module.exports = server => {
-    const controller = require('../../controllers/movies');
-    const PATH = '/api/v1';
+const express = require('express');
+const router = express.Router();
 
-    server.get(PATH, controller.root);
-    server.get(PATH + '/error', controller.error);
-    server.get(PATH + '/movies', controller.movies);
+const controller = require('../../controllers/movies');
+const PATH = '/api/v1';
 
-    return server;
-};
+router.get(PATH, controller.root);
+router.get(PATH + '/error', controller.error);
+router.get(PATH + '/movies', controller.movies);
+
+module.exports = router;
