@@ -9,7 +9,7 @@ if (process.env.NODE_ENV === 'test') {
     app.use('/api/v1', routesV1);
 }
 
-process.on('SIGINT', function () {
+process.on('SIGINT', () => {
     process.stdout.write('GRACEFUL SHUTDOWN');
 //    db.stop(function(err) {
 //      process.exit(err ? 1 : 0);

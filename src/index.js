@@ -1,11 +1,12 @@
 const winston  = require('winston');
-const port     = process.env.PORT || 3000;
 
+const port     = process.env.PORT || 3000;
 const app      = require('./app');
 const routesV1 = require('./routes/v1');
 
 // The logs should be applied before the routes
 require('./conf/logs')(app);
+
 app.use('/api/v1', routesV1);
 
 // SERVER

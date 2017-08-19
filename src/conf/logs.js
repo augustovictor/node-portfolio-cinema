@@ -15,9 +15,9 @@ const logger = new winston.Logger({
             colorize: true,
             timestamp: () => new Date().toLocaleString(),
             handleExceptions: true,
-            humanReadableUnhandledException: true
-        })
-    ]
+            humanReadableUnhandledException: true,
+        }),
+    ],
 });
 
 logger.add(winston.transports.Logstash, {
@@ -25,13 +25,13 @@ logger.add(winston.transports.Logstash, {
     port: logstashConfigs.port,
     node_name: logstashConfigs.node_name,
     handleExceptions: true,
-    humanReadableUnhandledException: true
+    humanReadableUnhandledException: true,
 });
 
-module.exports = app => {
+module.exports = (app) => {
     app.use(expressWinston.logger({
         transports: [
-            logger
-        ]
+            logger,
+        ],
     }));
-}
+};

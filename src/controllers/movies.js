@@ -4,16 +4,14 @@ exports.root = (req, res, next) => {
     next();
 };
 
-exports.error = (req, res, next) => {
-    return next(new Error('Log this error to the console.'));
-}
+exports.error = (req, res, next) => next(new Error('Log this error to the console.'));
 
-exports.movies = (req, res, next) => {
+exports.movies = (req, res) => {
     const defaultMovie = {
         id: 1,
         title: 'Best movie ever',
-        desc: 'This is a great movie indeed!'
+        desc: 'This is a great movie indeed!',
     };
 
-    res.json([defaultMovie]);
+    res.json([ defaultMovie ]);
 };

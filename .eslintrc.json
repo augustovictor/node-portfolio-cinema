@@ -1,12 +1,14 @@
 {
     "extends": "airbnb",
     "globals": {
-        "describe": true
+        "describe": true,
+        "it": true
     },
     "rules": {
         "indent": ["error", 4],
         "array-bracket-spacing": ["error", "always"],
-        "arrow-body-style": ["error", "never"],
+        "arrow-body-style": ["error", "as-needed"],
+        "no-multi-spaces": 0,
         "import/no-extraneous-dependencies": [
             "error",
             {

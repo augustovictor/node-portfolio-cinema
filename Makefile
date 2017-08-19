@@ -32,8 +32,8 @@ remove-all:
 	@docker container rm -f $(docker ps -a -q)
 
 lint:
-	@echo RUNNING LINTER
-	@node_modules/.bin/eslint "**/*.js" || exit 0
+	@clear
+	@node_modules/.bin/eslint "src/**/*" || exit 0
 
 lint-autofix:
 	@echo RUNNING LINTER
