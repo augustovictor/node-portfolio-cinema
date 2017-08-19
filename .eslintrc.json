@@ -2,7 +2,9 @@
     "extends": "airbnb",
     "globals": {
         "describe": true,
-        "it": true
+        "it": true,
+        "request": true,
+        "expect": true
     },
     "rules": {
         "indent": ["error", 4],

@@ -1,0 +1,2 @@
+--require src/test/integration/helpers.js
+--slow 5000

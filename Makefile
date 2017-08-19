@@ -39,9 +39,13 @@ lint-autofix:
 	@echo RUNNING LINTER
 	@$(nodebin)/eslint "src/**/*.js" --fix || exit 0
 
-tests:
-	@echo RUNNING TESTS
-	@export NODE_ENV=test && $(nodebin)/nyc --reporter=lcov --reporter=text $(nodebin)/mocha src/test/**/*.test.js
+tests-integration:
+	@echo RUNNING INTEGRATION TESTS
+	@export NODE_ENV=test && $(nodebin)/nyc --reporter=text --reporter=lcov $(nodebin)/mocha --opts src/test/integration/mocha.opts src/test/integration**/*.test.js
+
+tests-unit:
+	@echo RUNNING UNIT TESTS
+	@export NODE_ENV=test && $(nodebin)/mocha --opts src/test/unit/mocha.opts src/test/unit/**/*.test.js
 
 dev-watch:
 	$(nodemon) --exec $(MAKE) tests lint

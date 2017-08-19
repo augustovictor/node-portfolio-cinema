@@ -1,4 +1,4 @@
-version: '2.1'
+version: '2'
 
 services:
 
@@ -8,6 +8,8 @@ services:
         ports:
             - '9200:9200' # REST
             - '9300:9300' # Cross elastic nodes communication
+        volumes:
+            - node-cinema-elastic:/usr/share/elasticsearch/data
         networks:
             elk:
 
@@ -37,11 +39,6 @@ services:
             - elasticsearch
         networks:
             - elk
-        # healthcheck:
-        #     test: ["CMD", "curl", "http://localhost:9500"]
-        #     interval: 10s
-        #     timeout: 10s
-        #     retries: 6
 
     node-cinema:
         container_name: node-cinema
@@ -59,11 +56,10 @@ services:
             - .:/usr/src/app
         depends_on:
             - logstash
-        # depends_on:
-        #     logstash:
-        #         condition: service_healthy
         networks:
             - elk
 
+volumes:
+    node-cinema-elastic:
 networks:
     elk:
