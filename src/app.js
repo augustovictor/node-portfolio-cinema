@@ -1,12 +1,12 @@
-const express = require('express');
+const express    = require('express');
 const bodyParser = require('body-parser');
-const routesV1 = require('./routes/v1');
+const routesV1   = require('./routes/v1');
 
 const app = express();
 app.use(bodyParser.json());
 
 if (process.env.NODE_ENV === 'test') {
-    app.use('/', routesV1);
+    app.use('/api/v1', routesV1);
 }
 
 process.on('SIGINT', function () {
