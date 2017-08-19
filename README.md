@@ -1,4 +1,4 @@
-# node-portfolio-cinema
+# Node portfolio cinema
 
 [![Code Climate](https://codeclimate.com/github/augustovictor/node-portfolio-cinema/badges/gpa.svg)](https://codeclimate.com/github/augustovictor/node-portfolio-cinema)
 [![Test Coverage](https://codeclimate.com/github/augustovictor/node-portfolio-cinema/badges/coverage.svg)](https://codeclimate.com/github/augustovictor/node-portfolio-cinema)
@@ -67,7 +67,7 @@ make up
 
 2. Make an api call
 ```sh
-curl -i localhost:3000
+curl -i localhost:3000/api/v1
 ```
 
 3. Destroy all containers, remove volumes and network
