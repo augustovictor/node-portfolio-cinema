@@ -8,4 +8,4 @@ jobs:
         steps:
             - checkout # circleci is aware of the current git repo
             - run: npm install
-            - run: make tests
+            - run: make tests-integration

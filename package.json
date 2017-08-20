@@ -4,8 +4,7 @@
   "description": "Application developed to show my application development skills and concerns.",
   "main": "index.js",
   "scripts": {
-    "start": "node src/index.js",
-    "test": "xo"
+    "start": "node src/index.js"
   },
   "repository": {
     "type": "git",
