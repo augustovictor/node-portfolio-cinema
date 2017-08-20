@@ -1,0 +1,2 @@
+--require src/test/unit/helpers.js
+--slow 5000

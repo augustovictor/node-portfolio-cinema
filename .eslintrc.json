@@ -4,7 +4,8 @@
         "describe": true,
         "it": true,
         "request": true,
-        "expect": true
+        "expect": true,
+        "td": true
     },
     "rules": {
         "indent": ["error", 4],

@@ -1,5 +1,6 @@
+const movies = require('../repositories/movies');
+
 exports.root = (req, res, next) => {
-    // logger.info('New request');
     res.send('Hey you!!!').end();
     next();
 };
