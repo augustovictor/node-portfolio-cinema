@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
+
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/node-cinema';
 const options = {
     useMongoClient: true,
@@ -24,4 +25,4 @@ mongoose.connect(MONGODB_URI, options)
         });
     });
 
-module.exports = mongoose;
+module.exports = mongoose.conection;
