@@ -25,4 +25,4 @@ mongoose.connect(MONGODB_URI, options)
         });
     });
 
-module.exports = mongoose;
+module.exports = mongoose.conection;

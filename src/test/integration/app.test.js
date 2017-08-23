@@ -5,7 +5,7 @@ const defaultMovie = {
 };
 
 describe('GET /movies', () => {
-    it('should return an array of movies', (done) => {
+    it.skip('should return an array of movies', (done) => {
         request
             .get('/api/v1/movies')
             .expect(200)
