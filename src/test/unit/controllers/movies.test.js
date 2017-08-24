@@ -1,4 +1,5 @@
 const moviesController = require('../../../controllers/movies');
+const moviesRepository = require('../../../repositories/movies');
 
 describe('Controller: Movies', () => {
     describe('Get all movies: movies()', () => {
@@ -12,20 +13,12 @@ describe('Controller: Movies', () => {
             const req = {};
             const res = {
                 json: function(movies) {
-                    console.log('Not getting here.. Dunno y.')
-                    movies.should.deep.equal(defaultMovies);
-                }
-            };
-            
-            const stub = sinon.stub(moviesController, 'movies');
-            stub.resolves(defaultMovies);
-
-            moviesController.movies(req, res)
-                .then(movies => {
                     movies.should.deep.equal(defaultMovies);
                     done();
-                })
-                .catch(done);
+                }
+            };
+            sinon.stub(moviesRepository, 'getAll').resolves(defaultMovies);
+            moviesController.movies(req, res);
 
         });
     });

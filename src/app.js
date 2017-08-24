@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const routesV1   = require('./routes/v1');
 
 const app = express();
-require('./db/mongoose');
+// require('./db/mongoose');
 
 // MIDDLEWARE
 app.use(bodyParser.json());

@@ -9,3 +9,4 @@ jobs:
             - checkout # circleci is aware of the current git repo
             - run: npm install
             - run: make tests-integration
+            - run: make tests-unit
