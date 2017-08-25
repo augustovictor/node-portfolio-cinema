@@ -12,8 +12,8 @@ const MovieSchema = new mongoose.Schema({
     gender: {
         type: String,
         required: true,
-        enum: ['action', 'commedy', 'horror']
-    }
+        enum: [ 'action', 'commedy', 'horror' ],
+    },
 }, {
     timestamps: true,
 });

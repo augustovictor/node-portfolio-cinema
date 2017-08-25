@@ -17,3 +17,24 @@ describe('GET /movies', () => {
             .end(done);
     });
 });
+
+describe.only('POST /movies', () => {
+    it('should not add a new movie without required attributes', done => {
+        const movie = { title: 'New movie' };
+        const mockErrors = {
+            errors: [
+                { message: 'Description is required' },
+                { message: 'Release date is required' }
+            ]
+        };
+
+        request
+            .post('/api/v1/movies')
+            .send(movie)
+            .expect(400)
+            .expect(res => {
+                expect(res.body).toInclude(mockErrors);
+            })
+            .end(done);
+    });
+});

@@ -12,6 +12,7 @@
         "array-bracket-spacing": ["error", "always"],
         "arrow-body-style": ["error", "as-needed"],
         "no-multi-spaces": 0,
+        "no-underscore-dangle": 0,
         "import/no-extraneous-dependencies": [
             "error",
             {
