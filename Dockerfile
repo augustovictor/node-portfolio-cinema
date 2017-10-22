@@ -4,7 +4,7 @@ FROM keymetrics/pm2-docker-alpine:latest
 ENV PORT=3000
 
 # This variable should be set in production environment instead of in a file
-ENV NEW_RELIC_KEY=6eb7936d237d394a7251ed31cc758a56287e86b2
+ENV NEW_RELIC_KEY=#
 
 EXPOSE $PORT
 
